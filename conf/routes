@@ -7,7 +7,7 @@ module:testrunner
 # module:jobs
 
 GET     /user_all                                   User.AllUser
-
+GET     /user_by_id                                 User.UserById
 
 GET     /                                       App.Index
 

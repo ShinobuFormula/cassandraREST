@@ -40,3 +40,28 @@ func (c User) AllUser() revel.Result{
 
 	return c.RenderJSON(data)
 }
+
+
+func (c User) UserById() revel.Result{
+	cluster := gocql.NewCluster("192.168.109.137")
+	cluster.Keyspace = "squeat_db"
+	cluster.Consistency = gocql.One
+	session, err := cluster.CreateSession()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer session.Close()
+
+	param := make(map[string]interface{})
+	c.Params.BindJSON(&param)
+
+	data := make(map[string]interface{})
+
+	if err := session.Query(`SELECT * FROM user_by_id WHERE id = ?`, param["id"]).Consistency(gocql.One).MapScan(data); err != nil {
+		log.Fatal(err)
+	}
+
+	return c.RenderJSON(data)
+}
