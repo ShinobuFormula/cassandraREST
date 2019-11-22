@@ -1,4 +1,4 @@
-#Squeat Cassandra REST API
+# Squeat Cassandra REST API
 
 - We are using a Revel server to handle our HTTP request
 - We are commuicating with our Cassandra database using GoCQL package
