@@ -1,15 +1,14 @@
-# Welcome to Revel
+#Squeat Cassandra REST API
 
-A high-productivity web framework for the [Go language](http://www.golang.org/).
+- We are using a Revel server to handle our HTTP request
+- We are commuicating with our Cassandra database using GoCQL package
 
 
-### Start the web server:
+# Revel
 
-   revel run myapp
+### Start the API:
 
-### Go to http://localhost:9000/ and you'll see:
-
-    "It works"
+   revel run -a cassandraRest
 
 ## Code Layout
 
@@ -22,22 +21,11 @@ The directory structure of a generated Revel application:
     app/              App sources
         init.go       Interceptor registration
         controllers/  App controllers go here
-        views/        Templates directory
-
-    messages/         Message files
-
-    public/           Public static assets
-        css/          CSS files
-        js/           Javascript files
-        images/       Image files
-
-    tests/            Test suites
 
 
-## Help
+## Help with Revel
 
 * The [Getting Started with Revel](http://revel.github.io/tutorial/gettingstarted.html).
 * The [Revel guides](http://revel.github.io/manual/index.html).
 * The [Revel sample apps](http://revel.github.io/examples/index.html).
 * The [API documentation](https://godoc.org/github.com/revel/revel).
-
