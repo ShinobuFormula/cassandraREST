@@ -3,6 +3,18 @@
 - We are using a Revel server to handle our HTTP request
 - We are commuicating with our Cassandra database using GoCQL package
 
+## Requirements 
+
+#### In order to implement this API (if you have to)
+
+- You need to go get Revel and GoCQL.
+   - go get github.com/revel/revel
+   - go get github.com/gocql/gocql
+   
+- You need copy this repository in your Go workspace at
+   ->Go/src
+ 
+ - Then if all the packages are installed and this repository in the right place you can move on to the Revel part to start the API
 
 # Revel
 
