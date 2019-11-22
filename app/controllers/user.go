@@ -41,7 +41,6 @@ func (c User) AllUser() revel.Result{
 	return c.RenderJSON(data)
 }
 
-
 func (c User) UserById() revel.Result{
 	cluster := gocql.NewCluster("192.168.109.137")
 	cluster.Keyspace = "squeat_db"
