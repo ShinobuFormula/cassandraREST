@@ -131,3 +131,26 @@ func (c Group) GroupByMember() revel.Result{
 
 	return c.RenderJSON(data)
 }
+
+func (c Group) AddGroup() revel.Result{
+	cluster := gocql.NewCluster("192.168.109.137")
+	cluster.Keyspace = "squeat_db"
+	cluster.Consistency = gocql.One
+	session, err := cluster.CreateSession()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer session.Close()
+
+	param := make(map[string]interface{})
+	c.Params.BindJSON(&param)
+
+	if err := session.Query(`INSERT INTO group_by_id (id, leader, members, name, profile_picture) VALUES (uuid(), ?, ?, ?, ?)`, param["leader"], param["members"], param["name"], param["profile_picture"]).Consistency(gocql.One).Exec(); err != nil {
+		log.Fatal(err)
+	}
+
+
+	return c.RenderJSON("ok")
+}
