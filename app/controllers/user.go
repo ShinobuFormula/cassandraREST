@@ -113,3 +113,27 @@ func (c User) UserByUsername(username string) revel.Result{
 	return c.RenderJSON(data)
 }
 
+
+func (c User) AddUser() revel.Result{
+	cluster := gocql.NewCluster("192.168.109.137")
+	cluster.Keyspace = "squeat_db"
+	cluster.Consistency = gocql.One
+	session, err := cluster.CreateSession()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer session.Close()
+
+	param := make(map[string]interface{})
+	c.Params.BindJSON(&param)
+
+	if err := session.Query(`INSERT INTO user_by_id (id, createdat, updatedat, mail, firstname, lastname, password, username) VALUES (uuid(), ?, ?, ?, ?, ?, ?, ?)`, param["createdat"], param["updatedat"], param["mail"], param["firstname"],  param["lastname"],  param["password"],  param["username"]).Consistency(gocql.One).Exec(); err != nil {
+		log.Fatal(err)
+	}
+
+
+	return c.RenderJSON("ok")
+
+}
