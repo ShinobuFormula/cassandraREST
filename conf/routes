@@ -8,6 +8,7 @@ module:testrunner
 
 GET     /user_all                                   User.AllUser
 GET     /user_by_id                                 User.UserById
+GET     /user_by_mail                               User.UserByMail
 
 GET     /                                       App.Index
 
