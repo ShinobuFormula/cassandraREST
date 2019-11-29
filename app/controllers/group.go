@@ -154,3 +154,24 @@ func (c Group) AddGroup() revel.Result{
 
 	return c.RenderJSON("ok")
 }
+
+func (c Group) AddMemberToGroup() revel.Result{
+	cluster := gocql.NewCluster("192.168.109.137")
+	cluster.Keyspace = "squeat_db"
+	cluster.Consistency = gocql.One
+	session, err := cluster.CreateSession()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	param := make(map[string]interface{})
+
+	c.Params.BindJSON(&param)
+
+	if err := session.Query(`UPDATE group_by_id SET members = members + ? WHERE id = ?`,param["member"],param["id"]).Consistency(gocql.One).Exec(); err != nil {
+		log.Fatal(err)
+	}
+
+	return c.RenderJSON("ok")
+}

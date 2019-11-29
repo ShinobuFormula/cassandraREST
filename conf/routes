@@ -24,6 +24,7 @@ GET     /group_by_id                                 Group.GroupById
 GET     /group_by_leader                             Group.GroupByLeader
 GET     /group_by_member                             Group.GroupByMember
 GET     /add_group                                   Group.AddGroup
+GET     /add_member_group                            Group.AddMemberToGroup
 
 GET     /                                       App.Index
 
