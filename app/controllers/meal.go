@@ -109,22 +109,12 @@ func (c Meal) MealByName() revel.Result{
 	c.Params.BindJSON(&param)
 
 	data := make(map[string]interface{})
-	stuff := make(map[string]interface{})
-	i := 0
 
-	iter := session.Query(`SELECT * FROM  meal_by_name WHERE id = ? AND name = ?`, param["id"], param["name"]).Consistency(gocql.One).Iter()
-	for iter.MapScan(stuff) {
-		fmt.Println(i)
-		data[strconv.Itoa(i)] = stuff
-		i++
-		stuff = make(map[string]interface{})
-	}
-	if err := iter.Close(); err != nil {
+	if err := session.Query(`SELECT * FROM  meal_by_name WHERE id = ? AND name = ?`, param["id"], param["name"]).Consistency(gocql.One).MapScan(data); err != nil {
 		log.Fatal(err)
 	}
 
 	return c.RenderJSON(data)
-
 }
 
 func (c Meal) MealByMember() revel.Result{
