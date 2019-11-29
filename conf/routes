@@ -19,6 +19,8 @@ GET     /meal_by_name                               Meal.MealByName
 GET     /meal_by_member                             Meal.MealByMember
 GET     /add_meal                                   Meal.AddMeal
 
+GET     /group_all                                   Group.AllGroup
+
 GET     /                                       App.Index
 
 # Ignore favicon requests
