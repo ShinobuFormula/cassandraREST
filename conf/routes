@@ -22,6 +22,7 @@ GET     /add_meal                                   Meal.AddMeal
 GET     /group_all                                   Group.AllGroup
 GET     /group_by_id                                 Group.GroupById
 GET     /group_by_leader                             Group.GroupByLeader
+GET     /group_by_member                             Group.GroupByMember
 
 GET     /                                       App.Index
 
