@@ -80,7 +80,7 @@ func (c Meal) MealByGroup() revel.Result{
 	defer session.Close()
 
 	param := make(map[string]interface{})
-	c.Params.BindJSON(param)
+	c.Params.BindJSON(&param)
 
 	data := make(map[string]interface{})
 
