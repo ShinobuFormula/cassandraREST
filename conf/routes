@@ -15,6 +15,8 @@ GET     /add_user                                   User.AddUser
 GET     /meal_all                                   Meal.AllMeal
 GET     /meal_by_id                                 Meal.MealById
 GET     /meal_by_group                              Meal.MealByGroup
+GET     /meal_by_name                               Meal.MealByName
+GET     /meal_by_member                             Meal.MealByMember
 
 GET     /                                       App.Index
 
