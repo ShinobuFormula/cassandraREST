@@ -7,37 +7,35 @@
 
 #### In order to implement this API (if you have to)
 
-- You need to go get Revel and GoCQL.
-   - go get github.com/revel/revel
-   - go get github.com/gocql/gocql
+- You need to have the "cassandraRest.tar.gz" archive
+- Unzip the archive
    
-- You need copy this repository in your Go workspace at
-   ->Go/src
- 
- - Then if all the packages are installed and this repository in the right place you can move on to the Revel part to start the API
-
 # Revel
 
 ### Start the API:
 
-   revel run -a cassandraRest
+-> Double click on the "run.sh" to launch the API
 
-## Code Layout
+## Routes
 
-The directory structure of a generated Revel application:
+GET     /user_all                                   
+GET     /user_by_id                                 
+GET     /user_by_mail                               
+GET     /user_by_username                          
+GET     /add_user                                   
 
-    conf/             Configuration directory
-        app.conf      Main app configuration file
-        routes        Routes definition file
+GET     /meal_all                                   
+GET     /meal_by_id                                 
+GET     /meal_by_group                              
+GET     /meal_by_name                               
+GET     /meal_by_member                             
+GET     /add_meal                                   
 
-    app/              App sources
-        init.go       Interceptor registration
-        controllers/  App controllers go here
+GET     /group_all                                   
+GET     /group_by_id                                 
+GET     /group_by_leader                             
+GET     /group_by_member                             
+GET     /add_group                                   
+GET     /add_member_group                            
 
 
-## Help with Revel
-
-* The [Getting Started with Revel](http://revel.github.io/tutorial/gettingstarted.html).
-* The [Revel guides](http://revel.github.io/manual/index.html).
-* The [Revel sample apps](http://revel.github.io/examples/index.html).
-* The [API documentation](https://godoc.org/github.com/revel/revel).
